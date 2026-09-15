@@ -197,6 +197,14 @@ def approve_task(task_id: int, db: Session = Depends(get_db)):
         db.commit()
     return {"status": "success"}
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+static_dir = os.path.join(current_dir, "static")
+
+if not os.path.exists(static_dir):
+    os.makedirs(static_dir, exist_ok=True)
+
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
+
 @app.get("/")
 def read_index(): return FileResponse("static/index.html")
