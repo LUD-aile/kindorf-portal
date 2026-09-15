@@ -78,7 +78,6 @@ class TaskSubmit(BaseModel):
     task_id: int
     report_link: str
 
-# 25 Telegram Tasks Data
 INITIAL_TASKS = [
     {"title": "Task 1: Research 5 international studies", "description": "Find 5 international studies that could be useful for KINDORF’s content.", "stream": "Research", "points": 5, "deadline": "20.09.2026"},
     {"title": "Task 2: Find 5 potential hackathon sponsors", "description": "Find 5 potential sponsors for an international hackathon in Kazakhstan.", "stream": "Partnerships", "points": 20, "deadline": "23.09.2026"},
@@ -198,7 +197,6 @@ def claim_task(req: TaskAction, db: Session = Depends(get_db)):
     task = db.query(Task).filter(Task.id == req.task_id, Task.status == "available").first()
     if not task: raise HTTPException(status_code=400, detail="Task already taken")
     
-    # Enforce maximum 2 tasks rule
     active_tasks = db.query(Task).filter(Task.worker_id == req.user_id, Task.status.in_(["in_progress", "on_review"])).count()
     if active_tasks >= 2:
         raise HTTPException(status_code=400, detail="You cannot take more than 2 active tasks simultaneously.")
