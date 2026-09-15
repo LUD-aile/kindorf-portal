@@ -6,98 +6,129 @@
     <title>KINDORF Portal</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
+            --bg-color: #0b1120;
+            --card-bg: #161f33;
+            --text-color: #ffffff;
+            --text-muted: #8e9bb0;
+            --accent: #4cd7c6;
+            --accent-hover: #3bbfae;
             --danger: #ef4444;
             --success: #22c55e;
-            --border: #334155;
+            --border: #232d42;
+            --input-bg: #222d44;
         }
 
         body.light-theme {
-            --bg-color: #f8fafc;
+            --bg-color: #f1f5f9;
             --card-bg: #ffffff;
             --text-color: #0f172a;
             --text-muted: #64748b;
-            --accent: #0284c7;
+            --accent: #0d9488;
+            --accent-hover: #0f766e;
             --danger: #dc2626;
             --success: #16a34a;
             --border: #e2e8f0;
+            --input-bg: #f8fafc;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; transition: background-color 0.2s, color 0.2s; }
         body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; padding-bottom: 40px; }
-        header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        header { background: transparent; padding: 20px 40px; display: flex; justify-content: flex-end; align-items: center; }
         
-        .nav-controls { display: flex; gap: 10px; align-items: center; }
-        .icon-btn { background: none; border: 1px solid var(--border); color: var(--text-color); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 16px; }
-        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 24px; border-radius: 12px; margin-bottom: 24px; }
+        .nav-controls { display: flex; gap: 12px; align-items: center; }
+        .icon-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-color); padding: 8px 14px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: 600; }
         
-        .auth-card { max-width: 420px; margin: 60px auto; }
-        .input-group { position: relative; margin-bottom: 12px; }
-        .input-group input, select, textarea { width: 100%; padding: 10px 14px; background: var(--bg-color); border: 1px solid var(--border); color: var(--text-color); border-radius: 6px; font-size: 14px; }
-        .eye-btn { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; }
+        .container { max-width: 1000px; margin: 10px auto; padding: 0 20px; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 32px; border-radius: 16px; margin-bottom: 24px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); }
         
-        .btn { padding: 8px 16px; border: none; border-radius: 6px; background: var(--accent); color: white; cursor: pointer; font-weight: 600; }
-        .btn-danger { background: var(--danger); }
-        .btn-success { background: var(--success); }
-        .btn-circle { border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; }
+        .auth-card { max-width: 440px; margin: 20px auto; text-align: center; }
+        .brand-logo { width: 120px; height: 120px; margin: 0 auto 20px; display: block; border-radius: 50%; object-fit: cover; }
         
+        .input-group { position: relative; margin-bottom: 16px; }
+        .input-group input, select, textarea { 
+            width: 100%; 
+            padding: 14px 16px; 
+            background: var(--input-bg); 
+            border: 1px solid var(--border); 
+            color: var(--text-color); 
+            border-radius: 8px; 
+            font-size: 15px; 
+            outline: none;
+        }
+        .input-group input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+        
+        .eye-btn { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; }
+        
+        .btn { 
+            padding: 12px 20px; 
+            border: none; 
+            border-radius: 8px; 
+            background: var(--accent); 
+            color: #0b1120; 
+            cursor: pointer; 
+            font-weight: 700; 
+            font-size: 15px;
+            width: 100%;
+        }
+        .btn:hover { background: var(--accent-hover); }
+        .btn-danger { background: var(--danger); color: white; width: auto; }
+        .btn-success { background: var(--success); color: white; width: auto; }
+        .btn-circle { border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; width: auto; }
+        
+        .auth-link { color: var(--accent); text-decoration: none; font-size: 14px; display: inline-block; margin-top: 16px; font-weight: 500; }
+        .auth-link:hover { text-decoration: underline; }
+
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-        .task-node { background: var(--bg-color); border: 1px solid var(--border); padding: 16px; border-radius: 8px; display: flex; flex-direction: column; justify-content: space-between; }
-        .task-tag { display: inline-block; padding: 2px 8px; background: var(--border); border-radius: 4px; font-size: 12px; margin-right: 5px; }
+        .task-node { background: var(--bg-color); border: 1px solid var(--border); padding: 16px; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between; }
+        .task-tag { display: inline-block; padding: 4px 10px; background: var(--border); border-radius: 6px; font-size: 12px; margin-right: 6px; }
         
         .user-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
         .hidden { display: none !important; }
-        .error-msg { color: var(--danger); font-size: 13px; margin-top: 8px; display: none; }
+        .error-msg { color: var(--danger); font-size: 13px; margin-top: 10px; display: none; }
         
-        /* Toast Notification */
-        #toast-notif { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; padding: 12px 24px; border-radius: 8px; transform: translateY(100px); opacity: 0; transition: all 0.3s ease; }
+        #toast-notif { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: #0b1120; padding: 12px 24px; border-radius: 8px; transform: translateY(100px); opacity: 0; transition: all 0.3s ease; font-weight: bold; }
         #toast-notif.show { transform: translateY(0); opacity: 1; }
         
-        /* Modal Window */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
         .modal-overlay.show { opacity: 1; pointer-events: auto; }
-        .modal-body { background: var(--card-bg); padding: 24px; border-radius: 12px; width: 320px; text-align: center; border: 1px solid var(--border); }
+        .modal-body { background: var(--card-bg); padding: 24px; border-radius: 16px; width: 320px; text-align: center; border: 1px solid var(--border); }
     </style>
 </head>
 <body>
 
     <header>
-        <div style="font-weight: bold; font-size: 18px;">KINDORF Portal</div>
         <div class="nav-controls">
-            <button class="icon-btn" id="lang-btn" onclick="toggleLang()">🇷🇺</button>
             <button class="icon-btn" id="theme-btn" onclick="toggleTheme()">🌙</button>
-            <button class="btn btn-danger" id="t-logout" onclick="logout()">Выйти</button>
+            <button class="icon-btn" id="lang-btn" onclick="toggleLang()">RU</button>
+            <button class="btn btn-danger hidden" id="t-logout" onclick="logout()">Выйти</button>
         </div>
     </header>
 
     <div class="container">
         <!-- Auth Screen -->
         <div id="auth-screen" class="card auth-card">
+            <img src="/static/KIND.png" alt="KINDORF Logo" class="brand-logo" onerror="this.style.display='none'">
+
             <!-- Login Form -->
             <div id="login-form-block">
-                <h3 id="t-login-title" style="margin-bottom: 16px;">Добро Кабинет</h3>
+                <h2 id="t-login-title" style="margin-bottom: 24px; font-weight: 700; color: var(--accent);">Добро Кабинет</h2>
                 <div class="input-group">
-                    <input type="text" id="username-input" placeholder="Логин">
+                    <input type="text" id="username-input" placeholder="Username">
                 </div>
                 <div class="input-group">
-                    <input type="password" id="password-input" placeholder="Пароль">
+                    <input type="password" id="password-input" placeholder="Password">
                     <button class="eye-btn" onclick="togglePasswordVisibility('password-input', this)">🙈</button>
                 </div>
-                <button class="btn" id="t-login-btn" style="width: 100%;" onclick="handleLogin()">Войти в систему</button>
+                <button class="btn" id="t-login-btn" onclick="handleLogin()">Войти в систему</button>
                 <div id="login-error" class="error-msg"></div>
-                <p style="margin-top: 15px; font-size: 14px; text-align: center;">
-                    <a href="#" id="t-go-reg" onclick="switchAuthMode(true)">Создать аккаунт</a>
-                </p>
+                <div>
+                    <a href="#" class="auth-link" id="t-go-reg" onclick="switchAuthMode(true)">Создать аккаунт</a>
+                </div>
             </div>
 
             <!-- Registration Form -->
             <div id="register-form-block" class="hidden">
-                <h3 id="t-reg-title" style="margin-bottom: 16px;">Регистрация в команду</h3>
+                <h2 id="t-reg-title" style="margin-bottom: 24px; font-weight: 700; color: var(--accent);">Регистрация в команду</h2>
                 <div class="input-group">
                     <input type="text" id="reg-name" placeholder="ФИО / Имя">
                 </div>
@@ -108,22 +139,20 @@
                     <input type="password" id="reg-pass" placeholder="Пароль">
                     <button class="eye-btn" onclick="togglePasswordVisibility('reg-pass', this)">🙈</button>
                 </div>
-                <button class="btn btn-success" id="t-reg-btn" style="width: 100%;" onclick="handleRegister()">Зарегистрироваться</button>
+                <button class="btn" id="t-reg-btn" onclick="handleRegister()">Зарегистрироваться</button>
                 <div id="reg-error" class="error-msg"></div>
-                <p style="margin-top: 15px; font-size: 14px; text-align: center;">
-                    <a href="#" id="t-go-login" onclick="switchAuthMode(false)">Есть аккаунт? Войти</a>
-                </p>
+                <div>
+                    <a href="#" class="auth-link" id="t-go-login" onclick="switchAuthMode(false)">Есть аккаунт? Войти</a>
+                </div>
             </div>
         </div>
 
         <!-- Main Dashboard -->
         <div id="main-app" class="hidden">
-            <!-- User Status Header -->
             <div class="card">
                 <h2 id="welcome-name" style="margin-bottom: 4px;">User</h2>
                 <div id="user-role-badge" style="color: var(--accent); font-weight: 600; margin-bottom: 12px;">Volunteer</div>
                 
-                <!-- Volunteer Stats View -->
                 <div id="volunteer-section">
                     <h4 id="t-your-activity" style="margin-top: 10px;">Ваша активность</h4>
                     <p><span id="t-tasks-done">Задач сдано</span>: <strong id="stat-tasks">0</strong></p>
@@ -132,16 +161,19 @@
                 </div>
             </div>
 
-            <!-- Manager/Admin Panel Section -->
             <div id="manager-section" class="card hidden">
                 <h3 id="t-admin-panel" style="margin-bottom: 16px;">Панель управления проектом</h3>
                 
                 <div style="margin-bottom: 24px;">
                     <h4 id="t-create-task" style="margin-bottom: 10px;">Создать новое задание для стрима</h4>
-                    <input type="text" id="new-task-title" placeholder="Название задачи" style="margin-bottom: 8px;">
-                    <textarea id="new-task-desc" placeholder="Описание задачи..." rows="3" style="margin-bottom: 8px;"></textarea>
+                    <div class="input-group">
+                        <input type="text" id="new-task-title" placeholder="Название задачи">
+                    </div>
+                    <div class="input-group">
+                        <textarea id="new-task-desc" placeholder="Описание задачи..." rows="3"></textarea>
+                    </div>
                     
-                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                    <div style="display: flex; gap: 10px; margin-bottom: 16px;">
                         <select id="new-task-stream">
                             <option value="Finance">Finance</option>
                             <option value="HR">HR</option>
@@ -153,7 +185,7 @@
                             <option value="IT">IT</option>
                             <option value="Project Management">Project Management</option>
                         </select>
-                        <input type="number" id="new-task-points" placeholder="Коины" style="width: 120px;">
+                        <input type="number" id="new-task-points" placeholder="Коины" style="width: 140px;">
                     </div>
                     <button class="btn" id="t-pub-btn" onclick="addNewTask()">Опубликовать задачу</button>
                 </div>
@@ -161,19 +193,19 @@
                 <h4 id="t-tasks-review" style="margin-bottom: 12px;">Задачи, требующие проверки:</h4>
                 <div id="review-tasks-list" class="grid" style="margin-bottom: 24px;"></div>
 
-                <!-- Admin Team Management Only -->
                 <div id="admin-only-users" class="hidden">
                     <h4 id="t-team-list" style="margin-bottom: 10px;">Список всей команды:</h4>
-                    <input type="text" id="user-search-input" placeholder="🔍 Поиск по нику..." oninput="filterTeamUsers()" style="margin-bottom: 12px;">
+                    <div class="input-group">
+                        <input type="text" id="user-search-input" placeholder="🔍 Поиск по нику..." oninput="filterTeamUsers()">
+                    </div>
                     <div id="team-users-list"></div>
                 </div>
             </div>
 
-            <!-- Public Available Tasks -->
             <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                     <h3 id="t-available-tasks">Доступные задачи стримов</h3>
-                    <select id="filter-stream" style="width: auto;" onchange="loadAvailableTasks()">
+                    <select id="filter-stream" style="width: auto; padding: 8px 12px;" onchange="loadAvailableTasks()">
                         <option value="All">Все стримы</option>
                         <option value="Finance">Finance</option>
                         <option value="HR">HR</option>
@@ -189,7 +221,6 @@
                 <div id="available-tasks-list" class="grid"></div>
             </div>
 
-            <!-- Active User Tasks Grid -->
             <div class="card">
                 <h3 id="t-my-current-tasks" style="margin-bottom: 16px;">Мои текущие задачи</h3>
                 <div id="my-tasks-list" class="grid"></div>
@@ -197,14 +228,13 @@
         </div>
     </div>
 
-    <!-- Modals & Toasts -->
     <div id="confirm-modal" class="modal-overlay">
         <div class="modal-body">
             <h3 id="t-modal-title" style="margin-bottom: 10px;">Удаление</h3>
             <p id="t-modal-text" style="color: var(--text-muted); margin-bottom: 20px;">Выгнать пользователя из команды?</p>
             <div style="display: flex; gap: 10px; justify-content: center;">
                 <button class="btn btn-danger" id="modal-confirm-btn">Да</button>
-                <button class="btn" style="background: var(--border);" onclick="closeConfirmModal()">Отмена</button>
+                <button class="btn" style="background: var(--border); color: var(--text-color); width: auto;" onclick="closeConfirmModal()">Отмена</button>
             </div>
         </div>
     </div>
