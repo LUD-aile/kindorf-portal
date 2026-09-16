@@ -3,244 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KINDORF Portal</title>
+    <title>KINDORF PORTAL</title>
     <style>
         :root {
-            --bg-color: #0b1120;
-            --card-bg: #161f33;
-            --text-color: #ffffff;
-            --text-muted: #8e9bb0;
-            --accent: #4cd7c6;
-            --accent-hover: #3bbfae;
-            --danger: #ef4444;
-            --success: #22c55e;
-            --border: #232d42;
-            --input-bg: #222d44;
+            --bg-main: #0B132B;
+            --bg-card: #1C2541;
+            --bg-input: #3A506B;
+            --accent: #5BC0BE;
+            --text-light: #FFFFFF;
+            --text-muted: #6C757D;
+            --danger: #E63946;
+            --success: #6AC180;
+            --panel-border: #2A3C66;
+            --btn-pub: #2E5B70;
         }
-
-        body.light-theme {
-            --bg-color: #f1f5f9;
-            --card-bg: #ffffff;
-            --text-color: #0f172a;
-            --text-muted: #64748b;
-            --accent: #0d9488;
-            --accent-hover: #0f766e;
-            --danger: #dc2626;
-            --success: #16a34a;
-            --border: #e2e8f0;
-            --input-bg: #f8fafc;
+        .light-theme {
+            --bg-main: #F4F6F9;
+            --bg-card: #FFFFFF;
+            --bg-input: #E4E7EB;
+            --accent: #0077B6;
+            --text-light: #1D2D44;
+            --text-muted: #748CAB;
+            --danger: #D90429;
+            --success: #2A9D8F;
+            --panel-border: #A2D2FF;
+            --btn-pub: #0077B6;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; transition: background-color 0.2s, color 0.2s; }
-        body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; padding-bottom: 40px; }
-        header { background: transparent; padding: 20px 40px; display: flex; justify-content: flex-end; align-items: center; }
-        
-        .nav-controls { display: flex; gap: 12px; align-items: center; }
-        .icon-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-color); padding: 8px 14px; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: 600; }
-        
-        .container { max-width: 1000px; margin: 10px auto; padding: 0 20px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 32px; border-radius: 16px; margin-bottom: 24px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); }
-        
-        .auth-card { max-width: 440px; margin: 20px auto; text-align: center; }
-        .brand-logo { width: 120px; height: 120px; margin: 0 auto 20px; display: block; border-radius: 50%; object-fit: cover; }
-        
-        .input-group { position: relative; margin-bottom: 16px; }
-        .input-group input, select, textarea { 
-            width: 100%; 
-            padding: 14px 16px; 
-            background: var(--input-bg); 
-            border: 1px solid var(--border); 
-            color: var(--text-color); 
-            border-radius: 8px; 
-            font-size: 15px; 
-            outline: none;
-        }
-        .input-group input:focus, select:focus, textarea:focus { border-color: var(--accent); }
-        
-        .eye-btn { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; }
-        
-        .btn { 
-            padding: 12px 20px; 
-            border: none; 
-            border-radius: 8px; 
-            background: var(--accent); 
-            color: #0b1120; 
-            cursor: pointer; 
-            font-weight: 700; 
-            font-size: 15px;
-            width: 100%;
-        }
-        .btn:hover { background: var(--accent-hover); }
-        .btn-danger { background: var(--danger); color: white; width: auto; }
-        .btn-success { background: var(--success); color: white; width: auto; }
-        .btn-circle { border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; width: auto; }
-        
-        .auth-link { color: var(--accent); text-decoration: none; font-size: 14px; display: inline-block; margin-top: 16px; font-weight: 500; }
-        .auth-link:hover { text-decoration: underline; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-        .task-node { background: var(--bg-color); border: 1px solid var(--border); padding: 16px; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between; }
-        .task-tag { display: inline-block; padding: 4px 10px; background: var(--border); border-radius: 6px; font-size: 12px; margin-right: 6px; }
-        
-        .user-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg-main); color: var(--text-light); margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; transition: 0.3s; }
         .hidden { display: none !important; }
-        .error-msg { color: var(--danger); font-size: 13px; margin-top: 10px; display: none; }
+        .login-box { background: var(--bg-card); padding: 40px; border-radius: 20px; text-align: center; width: 350px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); position: relative; }
+        .login-box h2 { color: var(--accent); margin-bottom: 20px; margin-top: 10px; }
+        .logo-circle { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--accent); box-shadow: 0 0 15px var(--accent); }
         
-        #toast-notif { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: #0b1120; padding: 12px 24px; border-radius: 8px; transform: translateY(100px); opacity: 0; transition: all 0.3s ease; font-weight: bold; }
-        #toast-notif.show { transform: translateY(0); opacity: 1; }
+        .pass-container { position: relative; width: 100%; box-sizing: border-box; }
+        .eye-btn { position: absolute; right: 12px; top: 12px; background: transparent; border: none; color: var(--text-light); cursor: pointer; font-size: 16px; opacity: 0.7; z-index: 5; }
         
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        input, select, textarea { width: 100%; padding: 12px; background: var(--bg-input); border: none; border-radius: 8px; color: var(--text-light); margin-bottom: 15px; box-sizing: border-box; font-size: 15px; }
+        .wrapper { width: 100%; max-width: 1100px; padding: 20px; box-sizing: border-box; }
+        .card { background: var(--bg-card); padding: 25px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-left: 5px solid var(--accent); }
+        
+        .discord-layout { display: flex; gap: 20px; align-items: flex-start; }
+        .discord-sidebar { width: 320px; flex-shrink: 0; background: var(--bg-card); padding: 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-top: 4px solid var(--accent); box-sizing: border-box; }
+        .discord-content { flex-grow: 1; }
+
+        .search-bar { width: 100%; padding: 10px; margin-bottom: 15px; background: var(--bg-main); border: 1px solid var(--bg-input); border-radius: 6px; color: var(--text-light); }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin: 20px 0; }
+        .stat-card { background: rgba(120,120,120,0.05); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(120,120,120,0.1); }
+        .stat-val { font-size: 32px; font-weight: bold; color: var(--accent); }
+        
+        .btn { background: var(--accent); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.2s; }
+        body:not(.light-theme) .btn { color: var(--bg-main); }
+        .btn:hover { opacity: 0.9; }
+        .btn-danger { background: var(--danger); color: white !important; }
+        .btn-success { background: var(--success); color: white !important; }
+        .btn-pub { background: var(--btn-pub); color: white !important; }
+        .btn-circle { width: 40px; height: 40px; border-radius: 50%; background: var(--success); color: white; font-size: 18px; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; }
+        
+        .task-node { background: rgba(120,120,120,0.03); padding: 20px; border-radius: 12px; margin-bottom: 15px; border: 1px solid rgba(120,120,120,0.08); display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+        .task-tag { display: inline-block; padding: 4px 8px; background: var(--bg-input); border-radius: 6px; font-size: 11px; margin-right: 5px; text-transform: uppercase; font-weight: bold; }
+        
+        .controls-top { position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 10; }
+        .circle-toggle { background: var(--bg-card); border: 2px solid var(--accent); color: var(--text-light); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; font-weight: bold; }
+        
+        .user-row { background: rgba(120,120,120,0.04); padding: 12px; margin-bottom: 10px; border-radius: 8px; display: flex; flex-direction: column; gap: 8px; border: 1px solid rgba(120,120,120,0.05); }
+        .user-meta { font-size: 13px; color: var(--text-light); }
+        .user-actions { display: flex; gap: 8px; width: 100%; }
+        .user-actions .btn { flex: 1; padding: 6px 10px; font-size: 12px; }
+
+        .error-msg { color: var(--danger); font-size: 14px; font-weight: bold; margin-bottom: 15px; display: none; }
+        .link-toggle { color: var(--accent); cursor: pointer; text-decoration: underline; font-size: 14px; display: inline-block; margin-top: 15px; }
+        
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--bg-card); border: 2px solid var(--accent); padding: 15px 30px; border-radius: 10px; color: var(--text-light); font-weight: bold; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.4s ease; opacity: 0; z-index: 1000; }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; pointer-events: none; transition: 0.2s; }
         .modal-overlay.show { opacity: 1; pointer-events: auto; }
-        .modal-body { background: var(--card-bg); padding: 24px; border-radius: 16px; width: 320px; text-align: center; border: 1px solid var(--border); }
+        .modal-box { background: var(--bg-card); padding: 30px; border-radius: 16px; width: 340px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 2px solid var(--danger); transform: scale(0.8); transition: 0.2s; }
+        .modal-overlay.show .modal-box { transform: scale(1); }
+        .modal-box h3 { margin-top: 0; color: var(--danger); }
+        .modal-buttons { display: flex; gap: 15px; margin-top: 20px; }
+        .modal-buttons .btn { flex: 1; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .discord-layout { flex-direction: column; }
+            .discord-sidebar { width: 100%; }
+            .task-node { flex-direction: column; align-items: flex-start; }
+            .task-node button, .task-node div { width: 100%; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-controls">
-            <button class="icon-btn" id="theme-btn" onclick="toggleTheme()">🌙</button>
-            <button class="icon-btn" id="lang-btn" onclick="toggleLang()">RU</button>
-            <button class="btn btn-danger hidden" id="t-logout" onclick="logout()">Выйти</button>
-        </div>
-    </header>
-
-    <div class="container">
-        <!-- Auth Screen -->
-        <div id="auth-screen" class="card auth-card">
-            <img src="/static/KIND.png" alt="KINDORF Logo" class="brand-logo" onerror="this.style.display='none'">
-
-            <!-- Login Form -->
-            <div id="login-form-block">
-                <h2 id="t-login-title" style="margin-bottom: 24px; font-weight: 700; color: var(--accent);">Добро Кабинет</h2>
-                <div class="input-group">
-                    <input type="text" id="username-input" placeholder="Username">
-                </div>
-                <div class="input-group">
-                    <input type="password" id="password-input" placeholder="Password">
-                    <button class="eye-btn" onclick="togglePasswordVisibility('password-input', this)">🙈</button>
-                </div>
-                <button class="btn" id="t-login-btn" onclick="handleLogin()">Войти в систему</button>
-                <div id="login-error" class="error-msg"></div>
-                <div>
-                    <a href="#" class="auth-link" id="t-go-reg" onclick="switchAuthMode(true)">Создать аккаунт</a>
-                </div>
-            </div>
-
-            <!-- Registration Form -->
-            <div id="register-form-block" class="hidden">
-                <h2 id="t-reg-title" style="margin-bottom: 24px; font-weight: 700; color: var(--accent);">Регистрация в команду</h2>
-                <div class="input-group">
-                    <input type="text" id="reg-name" placeholder="ФИО / Имя">
-                </div>
-                <div class="input-group">
-                    <input type="text" id="reg-user" placeholder="Логин">
-                </div>
-                <div class="input-group">
-                    <input type="password" id="reg-pass" placeholder="Пароль">
-                    <button class="eye-btn" onclick="togglePasswordVisibility('reg-pass', this)">🙈</button>
-                </div>
-                <button class="btn" id="t-reg-btn" onclick="handleRegister()">Зарегистрироваться</button>
-                <div id="reg-error" class="error-msg"></div>
-                <div>
-                    <a href="#" class="auth-link" id="t-go-login" onclick="switchAuthMode(false)">Есть аккаунт? Войти</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Dashboard -->
-        <div id="main-app" class="hidden">
-            <div class="card">
-                <h2 id="welcome-name" style="margin-bottom: 4px;">User</h2>
-                <div id="user-role-badge" style="color: var(--accent); font-weight: 600; margin-bottom: 12px;">Volunteer</div>
-                
-                <div id="volunteer-section">
-                    <h4 id="t-your-activity" style="margin-top: 10px;">Ваша активность</h4>
-                    <p><span id="t-tasks-done">Задач сдано</span>: <strong id="stat-tasks">0</strong></p>
-                    <p><span id="t-coins-balance">Баланс коинов</span>: <strong id="stat-points">0</strong> XP</p>
-                    <p id="cert-tracker" style="margin-top: 8px; color: var(--text-muted); font-size: 14px;"></p>
-                </div>
-            </div>
-
-            <div id="manager-section" class="card hidden">
-                <h3 id="t-admin-panel" style="margin-bottom: 16px;">Панель управления проектом</h3>
-                
-                <div style="margin-bottom: 24px;">
-                    <h4 id="t-create-task" style="margin-bottom: 10px;">Создать новое задание для стрима</h4>
-                    <div class="input-group">
-                        <input type="text" id="new-task-title" placeholder="Название задачи">
-                    </div>
-                    <div class="input-group">
-                        <textarea id="new-task-desc" placeholder="Описание задачи..." rows="3"></textarea>
-                    </div>
-                    
-                    <div style="display: flex; gap: 10px; margin-bottom: 16px;">
-                        <select id="new-task-stream">
-                            <option value="Finance">Finance</option>
-                            <option value="HR">HR</option>
-                            <option value="Legal">Legal</option>
-                            <option value="Research">Research</option>
-                            <option value="Partnerships">Partnerships</option>
-                            <option value="Design">Design</option>
-                            <option value="SMM">SMM</option>
-                            <option value="IT">IT</option>
-                            <option value="Project Management">Project Management</option>
-                        </select>
-                        <input type="number" id="new-task-points" placeholder="Коины" style="width: 140px;">
-                    </div>
-                    <button class="btn" id="t-pub-btn" onclick="addNewTask()">Опубликовать задачу</button>
-                </div>
-
-                <h4 id="t-tasks-review" style="margin-bottom: 12px;">Задачи, требующие проверки:</h4>
-                <div id="review-tasks-list" class="grid" style="margin-bottom: 24px;"></div>
-
-                <div id="admin-only-users" class="hidden">
-                    <h4 id="t-team-list" style="margin-bottom: 10px;">Список всей команды:</h4>
-                    <div class="input-group">
-                        <input type="text" id="user-search-input" placeholder="🔍 Поиск по нику..." oninput="filterTeamUsers()">
-                    </div>
-                    <div id="team-users-list"></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                    <h3 id="t-available-tasks">Доступные задачи стримов</h3>
-                    <select id="filter-stream" style="width: auto; padding: 8px 12px;" onchange="loadAvailableTasks()">
-                        <option value="All">Все стримы</option>
-                        <option value="Finance">Finance</option>
-                        <option value="HR">HR</option>
-                        <option value="Legal">Legal</option>
-                        <option value="Research">Research</option>
-                        <option value="Partnerships">Partnerships</option>
-                        <option value="Design">Design</option>
-                        <option value="SMM">SMM</option>
-                        <option value="IT">IT</option>
-                        <option value="Project Management">Project Management</option>
-                    </select>
-                </div>
-                <div id="available-tasks-list" class="grid"></div>
-            </div>
-
-            <div class="card">
-                <h3 id="t-my-current-tasks" style="margin-bottom: 16px;">Мои текущие задачи</h3>
-                <div id="my-tasks-list" class="grid"></div>
-            </div>
-        </div>
-    </div>
+    <div id="toast-notif" class="toast">Notification text</div>
 
     <div id="confirm-modal" class="modal-overlay">
-        <div class="modal-body">
-            <h3 id="t-modal-title" style="margin-bottom: 10px;">Удаление</h3>
-            <p id="t-modal-text" style="color: var(--text-muted); margin-bottom: 20px;">Выгнать пользователя из команды?</p>
-            <div style="display: flex; gap: 10px; justify-content: center;">
-                <button class="btn btn-danger" id="modal-confirm-btn">Да</button>
-                <button class="btn" style="background: var(--border); color: var(--text-color); width: auto;" onclick="closeConfirmModal()">Отмена</button>
+        <div class="modal-box">
+            <h3 id="t-modal-title">Подтверждение</h3>
+            <p id="t-modal-text">Вы уверены?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-danger" id="modal-confirm-btn">OK</button>
+                <button class="btn" style="background: var(--bg-input); color: var(--text-light);" onclick="closeConfirmModal()">Cancel</button>
             </div>
         </div>
     </div>
 
-    <div id="toast-notif">Notification</div>
+    <div class="controls-top">
+        <button class="circle-toggle" id="theme-btn" onclick="toggleTheme()">🌙</button>
+        <button class="circle-toggle" id="lang-btn" onclick="toggleLang()">🇷🇺</button>
+    </div>
 
-    <script src="/static/app.js"></script>
+    <div id="auth-screen" class="login-box">
+        <img src="static/KIND.png" alt="KINDORF" class="logo-circle">
+        
+        <div id="login-form-block">
+            <h2 id="t-login-title">Добро Кабинет</h2>
+            <div id="login-error" class="error-msg"></div>
+            <input type="text" id="username-input" placeholder="Username">
+            <div class="pass-container">
+                <input type="password" id="password-input" placeholder="Password">
+                <button class="eye-btn" onclick="togglePasswordVisibility('password-input', this)">🙈</button>
+            </div>
+            <button class="btn" style="width: 100%;" id="t-login-btn" onclick="handleLogin()">Войти в систему</button>
+            <span class="link-toggle" id="t-go-reg" onclick="switchAuthMode(true)">Создать аккаунт</span>
+        </div>
+
+        <div id="register-form-block" class="hidden">
+            <h2 id="t-reg-title">Регистрация</h2>
+            <div id="reg-error" class="error-msg"></div>
+            <input type="text" id="reg-name" placeholder="Full Name">
+            <input type="text" id="reg-user" placeholder="Username">
+            <div class="pass-container">
+                <input type="password" id="reg-pass" placeholder="Password">
+                <button class="eye-btn" onclick="togglePasswordVisibility('reg-pass', this)">🙈</button>
+            </div>
+            <button class="btn" style="width: 100%; background: var(--success);" id="t-reg-btn" onclick="handleRegister()">Зарегистрироваться</button>
+            <span class="link-toggle" id="t-go-login" onclick="switchAuthMode(false)">Уже есть аккаунт? Войти</span>
+        </div>
+    </div>
+    <div id="main-app" class="wrapper hidden">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <div>
+                <h1 id="welcome-name" style="margin:0; font-size: 24px;"></h1>
+                <span id="user-role-badge" class="task-tag" style="background:var(--accent); color:white; margin-top: 5px;"></span>
+            </div>
+            <button class="btn btn-danger" id="t-logout" onclick="logout()">Выйти</button>
+        </div>
+
+        <div id="volunteer-section" class="card">
+            <h3 id="t-your-activity">Ваша активность</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-val" id="stat-tasks">0</div>
+                    <div style="color:var(--text-muted); font-size:14px; margin-top:5px;" id="t-tasks-done">Задач сдано</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" id="stat-points">0</div>
+                    <div style="color:var(--text-muted); font-size:14px; margin-top:5px;" id="t-coins-balance">Баланс коинов</div>
+                </div>
+            </div>
+            <div class="badge-status" id="cert-tracker" style="border: 1px solid var(--accent); padding:12px; border-radius:8px; text-align:center; font-weight:bold;"></div>
+            
+            <h3 style="margin-top:30px;" id="t-my-current-tasks">Мои текущие задачи</h3>
+            <div id="my-tasks-list"></div>
+        </div>
+
+        <div id="manager-section" class="hidden">
+            <div class="discord-layout">
+                
+                <div id="admin-only-users" class="discord-sidebar hidden">
+                    <h4 id="t-team-list" style="margin-top:0; margin-bottom:10px;">Список команды:</h4>
+                    <input type="text" id="user-search-input" class="search-bar" placeholder="🔍 Поиск по нику...">
+                    <div id="team-users-list" style="max-height: 450px; overflow-y: auto;"></div>
+                </div>
+
+                <div class="discord-content" style="flex-grow:1; width: 100%;">
+                    <div class="card" style="border-left-color: var(--panel-border);">
+                        <h3 style="color: var(--accent); margin-top:0;" id="t-admin-panel">Панель управления</h3>
+                        
+                        <div id="task-creation-block" style="margin-bottom:25px;">
+                            <h4 id="t-create-task" style="margin-bottom:10px;">Создать новое задание для стрима</h4>
+                            <input type="text" id="new-task-title" placeholder="Название задачи">
+                            <textarea id="new-task-desc" placeholder="Описание задачи..." rows="2"></textarea>
+                            <div style="display:flex; gap:15px; margin-bottom:10px;">
+                                <select id="new-task-stream">
+                                    <option value="Finance">Finance</option>
+                                    <option value="HR">HR</option>
+                                    <option value="Legal">Legal</option>
+                                    <option value="Research">Research</option>
+                                    <option value="Partnerships">Partnerships</option>
+                                    <option value="Design">Design</option>
+                                    <option value="SMM">SMM</option>
+                                    <option value="IT">IT</option>
+                                    <option value="Project Management">Project Management</option>
+                                </select>
+                                <input type="number" id="new-task-points" placeholder="Коины" style="width:120px; margin-bottom:0;">
+                            </div>
+                            <button class="btn btn-pub" id="t-pub-btn" onclick="addNewTask()">Опубликовать задачу</button>
+                        </div>
+
+                        <h4 id="t-tasks-review">Задачи, требующие проверки:</h4>
+                        <div id="review-tasks-list"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card" style="margin-top:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; gap: 10px;">
+                <h3 id="t-available-tasks" style="margin:0; font-size: 18px;">Доступные задачи стримов</h3>
+                <select id="filter-stream" style="width:160px; margin:0;" onchange="loadAvailableTasks()">
+                    <option value="All">All Streams</option>
+                    <option value="Finance">Finance</option>
+                    <option value="HR">HR</option>
+                    <option value="Legal">Legal</option>
+                    <option value="Research">Research</option>
+                    <option value="Partnerships">Partnerships</option>
+                    <option value="Design">Design</option>
+                    <option value="SMM">SMM</option>
+                    <option value="IT">IT</option>
+                    <option value="Project Management">Project Management</option>
+                </select>
+            </div>
+            <div id="available-tasks-list"></div>
+        </div>
+    </div>
+
+    <script src="static/app.js"></script>
 </body>
 </html>
